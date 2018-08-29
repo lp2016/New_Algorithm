@@ -28,6 +28,24 @@ class Solution:
         if F[-1] == maxD:
             return -1
         return F[-1]
-print(Solution().coinChange([277,279,238,98,365,103,330,222,155],7954))
+
+    def coinChange2(self, coins, amount):
+        if amount == 0:
+            return 0
+        mind = 99999         #注意设置成float("Inf")会比较慢
+        dp = [mind]*(amount+1)
+        dp[0] = 0
+        for i in range(1,amount+1):
+            for j in coins:
+                if i < j :
+                    continue
+                if dp[i] > dp[i-j] + 1:           #注意；此处利用dp[i] = min(dp[i],dp[i-j]+1)替换的话会超时。。。
+                    dp[i] = dp[i-j] + 1
+
+        if dp[amount] == mind:
+            return -1
+        return dp[amount]
+
+print(Solution().coinChange2([1,2147483647],2))
 
 

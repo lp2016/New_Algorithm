@@ -4,7 +4,7 @@
 #翻转全部字符
 # -*- coding:utf-8 -*-
 class Solution:
-    def LeftRotateString(self, s, n):
+    def LeftRotateString2(self, s, n):
         # write code here
         if n > len(s) :
             return ""
@@ -22,4 +22,15 @@ class Solution:
             k += 1
         return ' '.join(res)
 
-print(Solution().LeftRotateString("abcXYZdef",3))
+    def LeftRotateString(self, s, n):
+        if len(s) == 0 or n > len(s):
+            return ""
+        s = list(s)
+        s1 = s[0:n]
+        s2 = s[n:]
+        s1 = s1[::-1]
+        s2 = s2[::-1]
+        s = (s1 + s2)[::-1]
+        return "".join(s)
+
+print(Solution().LeftRotateString("abcXYZdef",10))

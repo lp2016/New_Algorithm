@@ -15,7 +15,20 @@ class Solution:
         for i  in range(0,len(s)):
             if d[s[i]] ==1:
                 return i
+        return -1
+
+    def FirstNotRepeatingChar2(self, s):
+        times = [0]*256
+        for i in range(0,len(s)):
+            times[ord(s[i])] += 1
+        for i in range(0,len(s)):
+            if times[ord(s[i])] == 1:
+                return i
+        return -1
 
 
-print(Solution().FirstNotRepeatingChar("NXWtnzyoHoBhUJaPauJaAitLWNMlkKwDYbbigdMMaYfkVPhGZcrEwp"))
+
+
+
+print(Solution().FirstNotRepeatingChar2(""))
 
